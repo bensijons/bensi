@@ -13,5 +13,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v2
+      - name: Install dependencies
+        run: yarn install --prefer-offline
 
       - run: npx nx affected --target=vercel --parallel=3
