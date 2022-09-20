@@ -12,8 +12,7 @@ export function Index() {
         <div className="container">
           <div id="welcome">
             <h1>
-              <span> Hello there, </span>
-              Welcome web1 👋
+              <span> Hello there, I was deployed with vercel! </span>
             </h1>
           </div>
 

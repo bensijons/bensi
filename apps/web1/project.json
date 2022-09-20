@@ -3,6 +3,12 @@
   "sourceRoot": "apps/web1",
   "projectType": "application",
   "targets": {
+    "vercel": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vercel --prod"
+      }
+    },
     "build": {
       "executor": "@nrwl/next:build",
       "outputs": ["{options.outputPath}"],
