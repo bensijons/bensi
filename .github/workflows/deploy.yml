@@ -22,8 +22,7 @@ jobs:
         run: |
           PROJECTS=$(npx nx print-affected --target=vercel --select=tasks.target.project)
           if [[ $PROJECTS != "[]" ]]; then
-            echo "::set-output name=VERCEL_PROJECTS::{\"projects\":$PROJECTS}"
-            echo "::set-output name=VERCEL_PROJECTS::{\"projects\":[$PROJECTS]}"
+            echo "::set-output name=VERCEL_PROJECTS::[$PROJECTS]"
             echo $PROJECTS
           fi
       - name: echo
@@ -34,6 +33,6 @@ jobs:
     needs: [prepare]
     strategy:
       fail-fast: false
-      matrix: ${{ fromJson(needs.prepare.outputs.VERCEL_PROJECTS) }}
+      matrix: ${{ needs.prepare.outputs.VERCEL_PROJECTS }}
     steps:
       - run: echo ${{needs.prepare.outputs.VERCEL_PROJECTS}}
