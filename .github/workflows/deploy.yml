@@ -22,10 +22,9 @@ jobs:
           PROJECTS=$(npx nx print-affected --target=vercel --select=tasks.target.project)
           if [[ $PROJECTS != "[]" ]]; then
             echo "::set-output name=VERCEL_PROJECTS::{\"projects\":$PROJECTS}"
-            echo "::set-output name=VERCEL_PROJECTS::{\"projects\":$PROJECTS}"
+            echo "::set-output name=VERCEL_PROJECTS::{\"projects\":[$PROJECTS]}"
             echo $PROJECTS
           fi
-              - name: Prepare build targets
       - name: echo
         id: vercel_projects
         run: echo ${{steps.vercel_projects.outputs.VERCEL_PROJECTS}}
