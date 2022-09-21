@@ -27,8 +27,5 @@ jobs:
   main:
     runs-on: ubuntu-latest
     needs: [prepare]
-    strategy:
-      fail-fast: false
-      matrix: ${{ fromJson(needs.prepare.outputs.VERCEL_PROJECTS) }}
     steps:
-      - run: echo ${{matrix.projects}}
+      - run: echo ${{needs.prepare.outputs.VERCEL_PROJECTS}}
