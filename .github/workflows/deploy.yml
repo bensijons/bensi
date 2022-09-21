@@ -6,14 +6,28 @@ on:
   pull_request:
 
 jobs:
-  main:
+  prepare:
     runs-on: ubuntu-latest
+    outputs:
+      VERCEL_PROJECTS: ${{ steps.vercel_projects.outputs.AFFECTED }}
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - run: yarn install --frozen-lockfile
       - uses: nrwl/nx-set-shas@v2
-      - name: Install dependencies
-        run: yarn install --prefer-offline
-
-      - run: npx nx affected --target=vercel --parallel=3
+      - name: Prepare build targets
+        id: vercel_projects
+        run: |
+          PROJECTS=$(npx nx print-affected --target=vercel --select=tasks.target.project)
+          if [[ $PROJECTS != "[]" ]]; then
+            echo "::set-output name=VERCEL_PROJECTS::{\"projects\":$PROJECTS}"
+            echo $PROJECTS
+          fi
+  main:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.prepare.outputs.VERCEL_PROJECTS) }}
+    steps:
+      - run: echo ${{matrix.projects}}
