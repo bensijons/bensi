@@ -26,7 +26,7 @@ jobs:
             echo $PROJECTS
           fi
       - name: echo
-        id: vercel_projects
+        id: echo
         run: echo ${{steps.vercel_projects.outputs.VERCEL_PROJECTS}}
   main:
     runs-on: ubuntu-latest
