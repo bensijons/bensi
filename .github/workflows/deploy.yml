@@ -33,6 +33,7 @@ jobs:
     needs: [prepare]
     strategy:
       fail-fast: false
-      matrix: ${{ needs.prepare.outputs.VERCEL_PROJECTS }}
+      matrix:
+        projects: ${{ needs.prepare.outputs.VERCEL_PROJECTS }}
     steps:
       - run: echo ${{needs.prepare.outputs.VERCEL_PROJECTS}}
