@@ -2,6 +2,8 @@
 
 # Bensi
 
+Hey there! This repo is currently just an nx sandbox that I use to test out some things. Here you can expect to see terrible commit messages, generated code and failed github action workflows. Cheers.
+
 This project was generated using [Nx](https://nx.dev).
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
