@@ -1,0 +1,86 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/web2/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/web2",
+        "index": "apps/web2/src/index.html",
+        "baseHref": "/",
+        "main": "apps/web2/src/main.tsx",
+        "polyfills": "apps/web2/src/polyfills.ts",
+        "tsConfig": "apps/web2/tsconfig.app.json",
+        "assets": ["apps/web2/src/favicon.ico", "apps/web2/src/assets"],
+        "styles": ["apps/web2/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/web2/src/environments/environment.ts",
+              "with": "apps/web2/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "vercel": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "echo hello from web2"
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "web2:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "web2:build:development"
+        },
+        "production": {
+          "buildTarget": "web2:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/web2/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/web2"],
+      "options": {
+        "jestConfig": "apps/web2/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
