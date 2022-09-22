@@ -22,7 +22,6 @@ jobs:
         run: |
           PROJECTS=$(npx nx print-affected --target=vercel --select=tasks.target.project)
           if [[ $PROJECTS != "[]" ]]; then
-            ls
             LIST=$(node ./scripts/listify.js "${PROJECTS}")
             echo "::set-output name=VERCEL_PROJECTS::{\"projects\":$LIST}"
             echo $PROJECTS
@@ -37,4 +36,4 @@ jobs:
       fail-fast: false
       matrix: ${{ fromJson(needs.prepare.outputs.VERCEL_PROJECTS) }}
     steps:
-      - run: echo matrix.projects
+      - run: echo ${{ matrix.projects }}
