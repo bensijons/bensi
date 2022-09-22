@@ -22,7 +22,10 @@ jobs:
         run: |
           PROJECTS=$(npx nx print-affected --target=vercel --select=tasks.target.project)
           if [[ $PROJECTS != "[]" ]]; then
-            echo "::set-output name=VERCEL_PROJECTS::{\"projects\":[$PROJECTS]}"
+            DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+            PROJECT_ROOT=$(git -C "$DIR" rev-parse --show-toplevel)
+            LIST=$(node $PROJECT_ROOT/scripts/listify.js "${PROJECTS}")
+            echo "::set-output name=VERCEL_PROJECTS::{\"projects\":$LIST}"
             echo $PROJECTS
           fi
       - name: echo
