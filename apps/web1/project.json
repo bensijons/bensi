@@ -6,7 +6,7 @@
     "vercel": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "vercel --prod"
+        "command": "echo hello from web1"
       }
     },
     "build": {
