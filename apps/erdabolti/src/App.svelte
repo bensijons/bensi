@@ -7,7 +7,7 @@
 <main>
   <div class="flex items-center">
     <h1 class="text-12xl font-bold underline">
-      Tailwind testing!
+      Tailwind sting!
     </h1>
   </div>
 </main>

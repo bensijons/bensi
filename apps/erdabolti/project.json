@@ -4,6 +4,12 @@
   "projectType": "application",
   "tags": [],
   "targets": {
+    "vercel": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "echo hello from web1"
+      }
+    },
     "build": {
       "executor": "@nxext/vite:build",
       "outputs": ["{options.outputPath}"],
