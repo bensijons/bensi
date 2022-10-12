@@ -8,8 +8,15 @@ on:
       - main
 
 jobs:
+  prep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: fails
+        run: exit 1
+
   success:
     runs-on: ubuntu-latest
+    needs: [prep]
     steps:
       - name: success
         run: echo sucessssssccs
