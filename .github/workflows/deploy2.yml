@@ -12,4 +12,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Non success
-        run: echo success!
+        run: exit 1
