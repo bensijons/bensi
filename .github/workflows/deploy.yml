@@ -29,7 +29,9 @@ jobs:
           fi
       - name: echo
         id: echo
-        run: echo ${{steps.vercel_projects.outputs.VERCEL_PROJECTS}}
+        run: |
+          echo ${{steps.vercel_projects.outputs.VERCEL_PROJECTS}}
+          echo a $PROJECTS b
   deploy-preview:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
