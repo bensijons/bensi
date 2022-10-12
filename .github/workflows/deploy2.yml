@@ -11,5 +11,5 @@ jobs:
   success:
     runs-on: ubuntu-latest
     steps:
-      - name: Non success
-        run: exit 1
+      - name: success
+        run: echo sucessssssccs
