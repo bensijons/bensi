@@ -33,7 +33,7 @@ jobs:
           scope: ${{ secrets.VERCEL_ORG_ID}}
           vercel-project-id: ${{ secrets[format('{0}_VERCEL_PROJECT_ID', inputs.project)] }}
   vercel-deploy-prod:
-    if: inputs.vercel-env == production
+    if: inputs.vercel-env == 'production'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
