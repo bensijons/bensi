@@ -20,7 +20,7 @@ on:
 
 jobs:
   vercel-deploy-preview:
-    if: ${{ inputs.vercel-env }} == 'preview'
+    if: env.PROJECT == 'preview'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -32,10 +32,10 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
           scope: ${{ secrets.VERCEL_ORG_ID}}
           vercel-project-id: ${{ secrets[format('{0}_VERCEL_PROJECT_ID', env.PROJECT)] }}
-        env:
-          PROJECT: ${{ inputs.project }}
+    env:
+      PROJECT: ${{ inputs.project }}
   vercel-deploy-prod:
-    if: ${{ inputs.vercel-env }} == 'production'
+    if: env.PROJECT == 'production'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
