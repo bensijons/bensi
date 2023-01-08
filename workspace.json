@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "goroutines-test": "apps/goroutines-test",
     "web1": "apps/web1",
     "web1-e2e": "apps/web1-e2e",
     "web2": "apps/web2",

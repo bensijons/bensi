@@ -60,5 +60,8 @@
       }
     }
   },
-  "defaultProject": "web1"
+  "defaultProject": "web1",
+  "implicitDependencies": {
+    "go.mod": "*"
+  }
 }
