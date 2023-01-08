@@ -8,11 +8,6 @@ import (
 	"time"
 )
 
-func Hello(name string) string {
-	result := "Hello " + name
-	return result
-}
-
 func CreateFile(filenumber string, c chan string, closeChan bool) {
 	time.Sleep(time.Second)
 	cwd, _ := os.Getwd()
