@@ -10,10 +10,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
       - run: |
-          echo PR Number
-          echo $(gh pr view --json number -q .number || echo "")
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER=$(echo $GITHUB_REF | awk -F'/' '{print $3}')
+          echo "Pull Request Number: $PR_NUMBER"
   if_merged:
     if: github.event.pull_request.merged
     runs-on: ubuntu-latest
@@ -21,8 +19,5 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
       - run: |
-          echo The PR was merged
-          echo $(gh pr view --json number -q .number || echo "")
-          echo The PR was merged
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER=$(echo $GITHUB_REF | awk -F'/' '{print $3}')
+          echo "Pull Request Number: $PR_NUMBER"
