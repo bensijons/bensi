@@ -4,9 +4,25 @@ on:
       - closed
 
 jobs:
+  echo_pr_number:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - run: |
+          echo PR Number
+          echo $(gh pr view --json number -q .number || echo "")
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   if_merged:
     if: github.event.pull_request.merged
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        echo The PR was merged
+      - name: checkout
+        uses: actions/checkout@v3
+      - run: |
+          echo The PR was merged
+          echo $(gh pr view --json number -q .number || echo "")
+          echo The PR was merged
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
