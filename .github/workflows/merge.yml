@@ -4,9 +4,17 @@ on:
       - closed
 
 jobs:
+  echo_pr_number:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo PR Number
+          echo (gh pr view --json number -q .number || echo "")
   if_merged:
     if: github.event.pull_request.merged
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        echo The PR was merged
+      - run: |
+          echo The PR was merged
+          echo (gh pr view --json number -q .number || echo "")
+          echo The PR was merged
