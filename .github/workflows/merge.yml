@@ -25,5 +25,5 @@ jobs:
     if: github.event.pull_request.merged && github.ref == 'refs/heads/main' && always()
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: checkout2
         uses: actions/checkout@v3
