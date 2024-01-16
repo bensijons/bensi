@@ -4,6 +4,7 @@ on:
 
 jobs:
   echo_pr_number:
+    if: github.event.pull_request.state != 'closed' || (github.event.pull_request.merged && github.ref == 'refs/heads/main' )
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -21,7 +22,7 @@ jobs:
           PR_NUMBER=$(echo $GITHUB_REF | awk -F'/' '{print $3}')
           echo "Pull Request Number: $PR_NUMBER"
   should_run_on_merge:
-    needs: if_merged
+    needs: echo_pr_number
     if: github.event.pull_request.merged && github.ref == 'refs/heads/main' && always()
     runs-on: ubuntu-latest
     steps:
