@@ -1,7 +1,6 @@
 on:
   pull_request:
-    types:
-      - closed
+    types: [opened, synchronize, reopened, closed]
 
 jobs:
   echo_pr_number:
