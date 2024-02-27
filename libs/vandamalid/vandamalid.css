@@ -18,6 +18,14 @@ div:has(> button[aria-label='Click to choose a file or drag here']) > div {
   display: none;
 }
 
+div:has(> .activity-indicator > svg.lucide-loader) > span {
+  display: none;
+}
+
+div:has(> .activity-indicator > svg.lucide-loader):after {
+  content: 'Hleð upp skjali';
+}
+
 div:has(> button[aria-label='Click to choose a file or drag here']):after {
   content: 'Leyfilegar skrár: myndbönd, hljóðskrár, myndir, .pdf, .doc, .docx, .ppt, .pptx';
   margin-top: 20px;
