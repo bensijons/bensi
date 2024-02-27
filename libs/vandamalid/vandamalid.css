@@ -6,11 +6,11 @@ button[aria-label='Click to choose a file or drag here'] > span:after {
   content: 'Smelltu til að bæta við skrá eða dragðu hana hingað';
 }
 
-.tally-block-file-upload > div > div:has(button):not(.actions) > div {
+div:has(> button[aria-label='Click to choose a file or drag here']) > div {
   display: none;
 }
 
-.tally-block-file-upload > div > div:has(button):not(.actions):after {
+div:has(> button[aria-label='Click to choose a file or drag here']):after {
   content: 'Leyfilegar skrár: myndbönd, hljóðskrár, myndir, .pdf, .doc, .docx, .ppt, .pptx';
   margin-top: 20px;
   font-size: 11px;
