@@ -25,6 +25,7 @@ div:has(> .activity-indicator > svg.lucide-loader) > span {
 
 /* Breytir upload í Hleð upp skrá */
 div:has(> .activity-indicator > svg.lucide-loader):after {
+  padding-left: 6px;
   content: 'Hleð upp skrá';
 }
 
