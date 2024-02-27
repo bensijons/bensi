@@ -42,3 +42,13 @@ div:has(> button[aria-label='Click to choose a file or drag here']):after {
   line-height: 1.5;
   text-align: center;
 }
+
+/* Felur enska textann fyrir Delete þegar hoverað er yfir Ruslatunnu icon */
+button[aria-label='Delete']:has(> div.tooltip) > div.tooltip > span {
+  display: none;
+}
+
+/* Setur inn íslenskan texta fyrir Delete þegar hoverað er yfir Ruslatunnu icon */
+button[aria-label='Delete']:has(> div.tooltip) > div.tooltip:after {
+  content: 'Eyða';
+}
