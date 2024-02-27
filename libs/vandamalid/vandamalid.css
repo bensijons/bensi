@@ -6,6 +6,14 @@ button[aria-label='Click to choose a file or drag here'] > span:after {
   content: 'Smelltu til að bæta við skrá eða dragðu hana hingað';
 }
 
+button[aria-label='Upload another file'] > span > span {
+  display: none;
+}
+
+button[aria-label='Upload another file'] > span:after {
+  content: 'Hlaða upp annarri skrá';
+}
+
 div:has(> button[aria-label='Click to choose a file or drag here']) > div {
   display: none;
 }
