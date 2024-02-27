@@ -1,0 +1,20 @@
+.tally-block-file-upload > div > div > button > span > span {
+	display: none;
+}
+
+.tally-block-file-upload > div > div > button > span:after {
+	content: "Smelltu til að bæta við skrá eða dragðu hana hingað";
+}
+
+.tally-block-file-upload > div > div:has(button):not(.actions) > div {
+	display: none;
+}
+
+.tally-block-file-upload > div > div:has(button):not(.actions):after {
+	content: "Leyfilegar skrár: myndbönd, hljóðskrár, myndir, .pdf, .doc, .docx, .ppt, .pptx";
+	margin-top: 20px;
+	font-size: 11px;
+	color: rgb(151, 169, 99);
+	line-height: 1.5;
+	text-align: center;
+}
