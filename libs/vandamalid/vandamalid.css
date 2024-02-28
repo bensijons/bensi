@@ -53,3 +53,10 @@ button[aria-label='Delete']:has(> div.tooltip) > div.tooltip > span {
 button[aria-label='Delete']:has(> div.tooltip) > div.tooltip:after {
   content: 'Eyða';
 }
+
+/* mobile */
+@media (max-width: 767px) {
+  button[aria-label='Click to choose a file or drag here'] > span:after {
+    content: 'Smelltu til að bæta við skrá';
+  }
+}
